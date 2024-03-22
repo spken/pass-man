@@ -1,2 +1,2 @@
 # pass-man
-A TUI-based password manager.
+A password manager based on electron.js
