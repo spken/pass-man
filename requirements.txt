@@ -1,2 +1,6 @@
+greenlet==3.0.3
+mysql-connector-python==8.4.0
 py_cui==0.1.6
+SQLAlchemy==2.0.31
+typing_extensions==4.12.2
 windows-curses==2.3.3

@@ -27,14 +27,14 @@ class PasswordManager:
     def display_details(self):
         selected_website = self.website_list.get()
         if selected_website == "Website1":
-            details_text = "Website: Website1\n \
-                Username: user1\nPassword: pass1"
+            details_text = ("Website: Website1\n"
+                            "Username: user1\nPassword: pass1")
         elif selected_website == "Website2":
-            details_text = "Website: Website2\n \
-                Username: user2\nPassword: pass2"
+            details_text = ("Website: Website2\n"
+                            "Username: user2\nPassword: pass2")
         elif selected_website == "Website3":
-            details_text = "Website: Website3\n \
-                Username: user3\nPassword: pass3"
+            details_text = ("Website: Website3\n"
+                            "Username: user3\nPassword: pass3")
         else:
             details_text = "No details available"
 
