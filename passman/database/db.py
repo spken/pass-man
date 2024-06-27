@@ -1,11 +1,10 @@
-import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model.entry import Base, Entry
 
 
 class Database:
-    DATABASE_URL = os.getenv('DATABASE_URL')
+    DATABASE_URL = 'mysql+mysqlconnector://root:@localhost:3306/passman'
 
     def __init__(self):
         self.engine = create_engine(self.DATABASE_URL)
