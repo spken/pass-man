@@ -1,4 +1,5 @@
 import py_cui
+import py_cui.keys
 from database.db import Database
 from screens.entry_view import EntryView
 
@@ -38,10 +39,12 @@ class PassMan:
 
         :param master: The root PyCUI object.
         """
-        self.master.set_title('passman')
+        self.master.set_title('passman - home')
 
         entry_view = EntryView(data=self.data, master=self.master)
         entry_view.display()
+
+        self.master.add_key_command('a', """method""")  # TODO: replace method
 
 
 if __name__ == '__main__':
