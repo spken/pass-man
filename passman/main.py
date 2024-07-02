@@ -1,7 +1,8 @@
-import py_cui
-import py_cui.keys
+from py_cui import PyCUI
 from database.db import Database
 from screens.entry_view import EntryView
+from screens.add_view import AddView
+from typing import Dict
 
 
 class PassMan:
@@ -9,17 +10,17 @@ class PassMan:
     A CUI-based password manager.
     """
 
-    def __init__(self, master):
+    def __init__(self, master: PyCUI) -> None:
         """
         :param master: The root PyCUI object.
         """
         self.master = master
         self.db = Database()
-        self.data = {}
+        self.data: Dict[str, Dict[str, str]] = {}
         self.set_data()
         self.set_up_cui()
 
-    def set_data(self):
+    def set_data(self) -> None:
         """
         Retrieve all entries from the database and store them in self.data.
         """
@@ -33,21 +34,20 @@ class PassMan:
         except Exception as e:
             print(f"Error retrieving data from the database: {e}")
 
-    def set_up_cui(self):
+    def set_up_cui(self) -> None:
         """
         Set up the CUI layout and bind key commands.
-
-        :param master: The root PyCUI object.
         """
         self.master.set_title('passman - home')
 
         entry_view = EntryView(data=self.data, master=self.master)
         entry_view.display()
 
-        self.master.add_key_command('a', """method""")  # TODO: replace method
+        av = AddView(master=self.master, passman=self)
+        self.master.add_key_command('a', av.display)  # TODO: doesn't work, fix
 
 
 if __name__ == '__main__':
-    root = py_cui.PyCUI(10, 4)
+    root = PyCUI(10, 4)
     pm = PassMan(root)
     root.start()

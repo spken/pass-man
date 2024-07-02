@@ -1,11 +1,14 @@
 import py_cui
+from typing import Dict
 
 
 class EntryView:
     """
     Home-screen view for all entries.
     """
-    def __init__(self, data, master):
+    def __init__(
+        self, data: Dict[str, Dict[str, str]], master: py_cui.PyCUI
+    ) -> None:
         """
         :param data: The entry data.
         :param master: The root PyCUI object.
@@ -14,24 +17,23 @@ class EntryView:
         self.master = master
         self.website_list = None
 
-    def display(self):
+    def display(self) -> None:
         self.website_column()
         self.details_column()
         self.website_list.add_key_command(
-            py_cui.keys.KEY_ENTER,
-            self.display_details
+            py_cui.keys.KEY_ENTER, self.display_details
         )
 
-    def website_column(self):
+    def website_column(self) -> None:
         """
         Set up the website list column in the CUI.
         """
         self.website_list = self.master.add_scroll_menu(
             'Websites', 0, 0, row_span=10
-        )
+            )
         self.website_list.add_item_list(self.data.keys())
 
-    def details_column(self):
+    def details_column(self) -> None:
         """
         Set up the details column in the CUI.
         """
@@ -40,7 +42,7 @@ class EntryView:
         )
         self.details.set_text('Select a website to view details')
 
-    def display_details(self):
+    def display_details(self) -> None:
         """
         Display the details of the selected website.
         """
